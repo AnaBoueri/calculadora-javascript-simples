@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Calculadora JavaScript</title>
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+            .container-md {
+                margin-top: 50px;
+                text-align: center;
+            }
+
+            .btn-success {
+            background-color: #61BBB1 !important;
+            border-color: #61BBB1 !important;
+            }
+
+        </style>
+    </head>
+    <body class=>
+        <div class="container-md">
+
+            <div class="d-flex justify-content-center align-items-center min-vh-100">
+                 <div class="card" style="width: 18rem;"> 
+                    <img src="images/undraw_calculator_21hp.svg" class="card-img-top" alt="...">
+                    <div class="card-body"> 
+                        <h5 class="card-title">Estudo de calculadora em JavaScript</h5> 
+                        <div class="card-text">
+                            <form action="">
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" id="num1" placeholder="Digite o primeiro número" >
+                                </div>
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" id="num2" placeholder="Digite o segundo número" >
+                                </div>
+                                <div class="mb-3">
+                                    <select name="" id="" class="form-select" aria-label="Default select example" >
+                                        <option selected>Selecione a operação</option>
+                                        <option value="1">Soma</option>
+                                        <option value="2">Subtração</option>
+                                        <option value="3">Multiplicação</option>
+                                        <option value="4">Divisão</option>
+                                        <option value="5">Potência</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn btn-success mb-3" onclick="calcular()">Calcular</button>
+
+                                <div id="resultado"  role="alert"> o resultado aparecerá aqui </div>
+                                </div>
+
+                            </form>
+                        </div> 
+                    </div> 
+                </div>
+             </div>
+        </div>
+    </body>
+
+    <script>
+        // Funções para as operações matemáticas
+        function somar(a,b){
+            return a + b;
+        }
+        function subtrair(a,b){
+            return a - b;
+        }
+        function multiplicar(a,b){
+            return a * b;
+        }
+        function dividir(a,b){
+            return a / b;
+        }
+        function potencia(a,b){
+            return Math.pow(a,b);
+        }
+
+        // Função para calcular o resultado com base na operação selecionada
+        function calcular(){
+            const num1 = Number(document.getElementById("num1").value);
+            const num2 = Number(document.getElementById("num2").value);
+            const operacao = document.querySelector("select").value;
+
+            let resultado;
+
+            if (operacao == 4 && num2 === 0) {
+                resultado = "Erro: não é possível dividir por zero";
+            } else {
+                operacao == 1 ? resultado = somar(num1,num2) :
+                operacao == 2 ? resultado = subtrair(num1,num2) :
+                operacao == 3 ? resultado = multiplicar(num1,num2) :
+                operacao == 4 ? resultado = dividir(num1,num2) :
+                operacao == 5 ? resultado = potencia(num1,num2) :
+                resultado = "Operação inválida";
+}
+
+            resultado == "Operação inválida"|| resultado == "Erro: não é possível dividir por zero" ? document.getElementById("resultado").setAttribute("class", "alert alert-danger"):
+            document.getElementById("resultado").setAttribute("class", "alert alert-success");
+
+            document.getElementById("resultado").innerHTML = `O resultado é:</br> ${resultado}`;
+
+        }
+    </script>
+</html>
